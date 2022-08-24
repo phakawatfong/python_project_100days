@@ -16,8 +16,8 @@ def clear_console():
 
 # create function to random for our DATA
 def get_random_account():
-  answer = random.choice(data)
-  return answer
+  rand_choice = random.choice(data)
+  return rand_choice
   
 # create function just to display description
 def format_data(account):
@@ -25,6 +25,7 @@ def format_data(account):
   follower_count = account["follower_count"]
   description = account["description"]
   country = account["country"]
+  # print(f"follower numbers {follower_count}")
   # print(f"[{name}], a {description} from {country}.")
   return f"[{name}], a {description} from {country}."
 
@@ -35,7 +36,7 @@ def format_data(account):
 # format_data(account_2)
 
 # guess = input("Which person has more follower on 'Instragram' A or B ? ")
-def check_answer(guess, account_1, account_2):
+def check_answer(account_1, account_2):
   a_follower = account_1["follower_count"]
   b_follower = account_2["follower_count"]
   print(a_follower)
@@ -77,24 +78,24 @@ def game_play():
     while account_a == account_b:
       account_b = get_random_account()
       
-      print(f"Compare A: {format_data(account_a)}")
-      print("vs")
-      print(f"Against B: {format_data(account_b)}")
-      print('\n')
+    print(f"Compare A: {format_data(account_a)}")
+    print("vs")
+    print(f"Against B: {format_data(account_b)}")
+    print('\n')
       
-      guess = input("Which person has more follower on 'Instragram' A or B ? ")
-      ans = check_answer(guess, account_a, account_b)
-      print(f"guess: {guess}")
-      print(f"answer {ans}")
+    guess = input("Which person has more follower on 'Instragram' A or B ? ")
+    ans = check_answer(account_a, account_b)
 
-      clear_console()
-      
-      if guess.lower() == ans:
-        score += 1
-        print(f"correct! your score is {score}\n")
-      else:
-        game_on = False
-        print(f"wrong! your final score is {score}")
+
+    clear_console()
+    if guess.lower() == ans:
+      score += 1
+      # print(f"guess: {guess}")
+      # print(f"answer {ans}")
+      print(f"correct! your score is {score}\n")
+    else:
+      game_on = False
+      print(f"wrong! your final score is {score}")
 
 game_play()
         
